@@ -1,9 +1,12 @@
 import React from 'react';
 
-const InputField = () => {
+const InputField = (props) => {
     return (
         <div>
-            <input type="text" value="Change this text" />
+            <input
+                type="text"
+                value={props.initialvalue}
+            />
         </div>
     )
 }

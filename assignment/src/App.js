@@ -4,10 +4,15 @@ import InputField from './InputField/InputField.js';
 import OutputTextArea from './OutputTextArea/OutputTextArea.js';
 
 class App extends Component {
-  render() {
+  state = {
+    text: "This is the initial text."
+  };
+
+render() {
+
     return (
       <div className="App">
-      <InputField />
+      <InputField initialvalue={this.state.text} />
       <OutputTextArea />
       </div>
     );
