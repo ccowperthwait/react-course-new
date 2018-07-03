@@ -6,7 +6,6 @@ const charComponent = (props) => {
         padding: '16px',
         margin: '16px',
         border: '1px solid black',
-        // textAlign: 'center'
     };
     return (
         <div onClick={props.click} style={test}> {props.character}
