@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Team from './Team/Team.js';
+// import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
 
@@ -52,7 +53,11 @@ class App extends Component {
         color: 'white',
         border: '1px solid blue',
         padding: '8px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        // ':hover':  {
+        //   backgroundColor: 'lightgreen',
+        //   color: 'black'
+        // }
     }
 
     let teams = null;
@@ -74,6 +79,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     };
 
     let classes = [];
@@ -85,14 +94,20 @@ class App extends Component {
     }
 
     return (
-    <div className="App">
-      <p className={classes.join(' ')}>React App - Branch of previous "assigment" for section5!</p>
-       <hr/>
-      <button style={style} onClick={this.doShowHideList} >Toggle</button>
-      {teams}
-      </div>
+      // <StyleRoot>
+        <div className="App">
+          <p className={classes.join(' ')}>React App - Branch of previous "assigment" for section5!</p>
+          <hr/>
+          <button style={style} onClick={this.doShowHideList} >Toggle</button>
+          {teams}
+        </div>
+      // </StyleRoot>
     );
   }
 }
 
-export default App;
+export default 
+// Radium(
+  App
+// )
+;
