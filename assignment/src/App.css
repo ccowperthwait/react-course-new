@@ -1,10 +1,12 @@
-.App {
-  text-align: center;
+.red {
+  color: red
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.bold {
+  font-weight: bold
+}
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -26,3 +28,4 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+

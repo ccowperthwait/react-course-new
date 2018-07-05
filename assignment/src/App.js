@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   deleteTeamHandler = (index) => {
-    //const teams = this.state.Teams.slice();
     const teams = [...this.state.Teams];
     teams.splice(index, 1);
     this.setState({
@@ -29,7 +28,6 @@ class App extends Component {
     const team = {
       ...this.state.Teams[teamIndex]
     };
-    //const team = Object.assign({}, this.state.Teams[teamIndex]);
 
     team.name = event.target.value;
 
@@ -50,7 +48,8 @@ class App extends Component {
 
   render() {
     const style = {
-        backgroundColor: '#5555',
+        backgroundColor: 'green',
+        color: 'white',
         border: '1px solid blue',
         padding: '8px',
         cursor: 'pointer'
@@ -72,24 +71,23 @@ class App extends Component {
                 />
             )
             })}
-          {/* <Team
-            id: 1, name={this.state.Teams[0].id: 1, name}
-            rank={this.state.Teams[0].rank}
-          />
-          <Team
-            id: 1, name={this.state.Teams[1].id: 1, name}
-            rank={this.state.Teams[1].rank}
-          />
-          <Team
-            id: 1, name={this.state.Teams[2].id: 1, name}
-            rank={this.state.Teams[2].rank}
-          /> */}
         </div>
-      )
+      );
+      style.backgroundColor = 'red';
     };
+
+    let classes = [];
+    if(this.state.Teams.length<3){
+      classes.push('red');
+    }
+    if(this.state.Teams.length<2){
+      classes.push('bold');
+    }
 
     return (
     <div className="App">
+      <p className={classes.join(' ')}>React App - Branch of previous "assigment" for section5!</p>
+       <hr/>
       <button style={style} onClick={this.doShowHideList} >Toggle</button>
       {teams}
       </div>
