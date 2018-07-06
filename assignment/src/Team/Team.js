@@ -1,5 +1,5 @@
 import React from 'react';
-import './Team.css';
+import classes from './Team.css';
 // import Radium from 'radium';
 
 const Team = (props) => {
@@ -9,7 +9,7 @@ const Team = (props) => {
     //     }
     // };
     return (
-        <div className="Team"
+        <div className={classes.Team}
         //  style={style}
          >
             <p onClick={props.click}>Team: {props.name}</p>

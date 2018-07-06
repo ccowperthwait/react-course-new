@@ -8,8 +8,8 @@
     background-color: #ccc;
 }
 
-/* @media (min-width: 500px) {
+@media (min-width: 500px) {
     .Team {
         width: 450px;
     }
-} */
+}
