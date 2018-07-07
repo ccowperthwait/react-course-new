@@ -12,7 +12,7 @@ const Team = (props) => {
         <div className={classes.Team}
         //  style={style}
          >
-            <p onClick={props.click}>Team: {props.name}</p>
+            <p onClick={props.clicked}>Team: {props.name}</p>
             <p>Rank: {props.rank}</p>
             <input type="text" onChange={props.changed} value={props.name} />
         </div>
