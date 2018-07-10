@@ -1,24 +1,47 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Teams from '../components/Teams/Teams';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
+  constructor (props) {
+    super(props);
+    console.log('[App.js] Inside constructor.', props);
+    this.state = {
+      Teams: [
+        {id: 'asdf', name: "Sweden",rank: 5},
+        {id: 'sdfg', name: "Germany",rank: 2},
+        {id: 'dghh', name: "United States",rank: 10}
+      ],
+      isListVisible: false
+    }
+  }
 
-  state = {
-    Teams: [
-      {id: 'asdf', name: "Sweden",rank: 5},
-      {id: 'sdfg', name: "Germany",rank: 2},
-      {id: 'dghh', name: "United States",rank: 10}
-    ],
-    isListVisible: false
+  componentWillMount(){
+    console.log('[App.js] Inside componentWillMount.');
+  }
+
+  componentDidMount(){
+    console.log('[App.js] Inside componentDidMount.');
+  }
+
+  // shouldComponentUpdate(nextProps,nextState){
+  //   console.log('[App.js] UPDATE Inside shouldComponentUpdate.',nextProps,this.props,nextState);
+  //   return (
+  //     nextState.Teams !== this.state.Teams ||
+  //     nextState.isListVisible !== this.state.isListVisible
+  //   )
+  // }
+
+  componentWillUpdate(nextProps,nextState){
+    console.log('[App.js] UPDATE Inside componentWillUpdate.',nextProps,nextState);
   }
 
   deleteTeamHandler = (index) => {
-    const teams = [...this.state.Teams];
-    teams.splice(index, 1);
+    const tempTeams = [...this.state.Teams];
+    tempTeams.splice(index, 1);
     this.setState({
-      Teams: teams
+      Teams: tempTeams
     });
   }
 
@@ -26,35 +49,36 @@ class App extends Component {
     const teamIndex = this.state.Teams.findIndex(t => {
       return t.id === id;
     })
-    const team = {
+    const tempTeam = {
       ...this.state.Teams[teamIndex]
     };
 
-    team.name = event.target.value;
+    tempTeam.name = event.target.value;
 
-    const teams = [...this.state.Teams]
-    teams[teamIndex] = team;
+    const tempTeams = [...this.state.Teams]
+    tempTeams[teamIndex] = tempTeam;
 
     this.setState({
-      Teams: teams
+      Teams: tempTeams
     })
   }
 
   doShowHideList = () => {
-    const temp = this.state.isListVisible;
+    const tempTeams = this.state.isListVisible;
     this.setState({
-      isListVisible: !temp
+      isListVisible: !tempTeams
     });
   }
 
   render() {
+    console.log('[App.js] Inside render.');
 
-    let teams = null;
+    let tempTeams = null;
 
     if(this.state.isListVisible){
-      teams = (
+      tempTeams = (
           <Teams
-            teams={this.state.Teams}
+            Teams={this.state.Teams}
             clicked={this.deleteTeamHandler}
             changed={this.nameChangeHandler}
           />
@@ -63,16 +87,22 @@ class App extends Component {
 
     return (
         <div className={classes.App}>
+        <button onClick={() => {this.setState({isListVisible: true})}}>Show Persons</button>
           <Cockpit
             appTitle={this.props.title}
             isListVisible={this.state.isListVisible}
             Teams={this.state.Teams}
             clicked={this.doShowHideList}
           />
-          {teams}
+          {tempTeams}
         </div>
     );
   }
+
+    componentDidUpdate(){
+    console.log('[App.js] UPDATE Inside componentDidUpdate.');
+  }
+
 }
 
 export default App;

@@ -1,26 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Team.css';
-// import Radium from 'radium';
 
-const Team = (props) => {
-    // const style = {
-    //     '@media (min-width: 500px)': {
-    //         width: '450px'
-    //     }
-    // };
-    return (
-        <div className={classes.Team}
-        //  style={style}
-         >
-            <p onClick={props.clicked}>Team: {props.name}</p>
-            <p>Rank: {props.rank}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
+class Team extends Component {
+
+    constructor (props) {
+        super(props);
+        console.log('[Team.js] Inside constructor.', props);
+      }
+    
+      componentWillMount(){
+        console.log('[Team.js] Inside componentWillMount.');
+      }
+    
+      componentDidMount(){
+        console.log('[Team.js] Inside componentDidMount.');
+      }
+    
+    render(){
+        console.log('[Team.js] Inside render.');
+        return (          
+            <div className={classes.Team}>
+            <p onClick={this.props.clicked}>Team: {this.props.name}</p>
+            <p>Rank: {this.props.rank}</p>
+            <input type="text" onChange={this.props.changed} value={this.props.name} />
         </div>
-    )
+        )
+    }
 }
 
-export default 
-// Radium(
-    Team
-// )
-;
+export default Team;
